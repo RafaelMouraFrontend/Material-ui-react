@@ -11,6 +11,7 @@ import { Grid,
         ListItemSecondaryAction,
         IconButton
       } from '@material-ui/core'
+
 import { Delete, Edit } from '@material-ui/icons'
 import Form from './Form'
 
@@ -18,8 +19,10 @@ import Form from './Form'
 const styles = {
   paper: {
     padding: 20,
-    marginTop: 10,
-    marginBottom: 10
+    marginTop: 5,
+    height: 500,
+    overflowY: 'auto'
+   
   }
 }
 
@@ -44,9 +47,9 @@ class AutoGrid extends Component {
       } = this.props
       
     return (
-      <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item sm>
+      
+        <Grid container>
+          <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
               {exercises.map(([group, exercises])=>
                 !category || category === group
@@ -82,7 +85,7 @@ class AutoGrid extends Component {
               )}
             </Paper>
           </Grid>
-          <Grid item xs>
+          <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
               {editMode
               ? <Form 
@@ -107,7 +110,7 @@ class AutoGrid extends Component {
             </Paper>
           </Grid>
         </Grid>
-      </div>
+      
     )
   }
 
