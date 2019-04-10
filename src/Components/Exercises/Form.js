@@ -1,15 +1,10 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component } from 'react';
 import { TextField, FormControl, InputLabel, MenuItem, Select, Button } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
-  FormControl:{
-    width: 250
-  }
-});
 
-class FormDialog extends Component {
+
+
+export default class extends Component {
   
   state = this.getInitState()
   getInitState(){
@@ -43,7 +38,7 @@ class FormDialog extends Component {
 
   render(){
     const { title, description, muscles } = this.state, 
-    {classes, exercise, muscles: categories} = this.props
+    { exercise, muscles: categories} = this.props
 
   return  <form>
     <TextField
@@ -51,11 +46,10 @@ class FormDialog extends Component {
       value={title}
       onChange={this.handleChange('title')}
       margin="normal"
-      className={classes.FormControl}
-      
+      fullWidth
     />
     <br/>
-    <FormControl className={classes.FormControl}>
+    <FormControl fullWidth>
       <InputLabel htmlFor="muscles">
         Muscles
       </InputLabel>
@@ -79,13 +73,14 @@ class FormDialog extends Component {
       value={description}
       onChange={this.handleChange('description')}
       margin="normal"
-      className={classes.FormControl}
+      fullWidth
     />
     <br/>
     <Button 
       color="primary"
       variant="contained" 
       onClick={this.handleSubmit}
+      disabled={!title || !muscles}
     >
       {this.props.exercise ? 'Edit' : 'Create'}
     </Button>              
@@ -93,8 +88,5 @@ class FormDialog extends Component {
   }
 }
 
-FormDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(FormDialog);
+

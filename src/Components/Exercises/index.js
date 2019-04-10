@@ -87,6 +87,12 @@ class AutoGrid extends Component {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
+              <Typography 
+                variant="display1"
+                gutterBottom
+              >
+                {title}
+              </Typography>                
               {editMode
               ? <Form 
                 key={id}
@@ -94,17 +100,11 @@ class AutoGrid extends Component {
                 muscles={muscles}
                 onSubmit={onEdit}
                 />
-              : <Fragment>
-                  <Typography variant="display1">
-                    {title}
-                  </Typography>
-                  <Typography 
+              : <Typography 
                   variant="subheading"
-                  style={{marginTop: 20}}
                   >
                     {description}
-                  </Typography>
-                </Fragment>
+                </Typography>
               }
               
             </Paper>
