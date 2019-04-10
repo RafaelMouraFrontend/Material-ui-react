@@ -33,7 +33,12 @@ export default class extends Component {
           
     
     return <Fragment>
-      <Fab color="primary" onClick={this.handleToggle} size="small" >
+      <Fab color="primary" 
+        onClick={this.handleToggle} 
+        size="small" 
+        color="secondary"
+      
+      >
         <AddIcon />
       </Fab>
 

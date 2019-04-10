@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Tabs } from '@material-ui/core'
+import { AppBar, Tabs } from '@material-ui/core'
 import { Tab, withWidth } from '@material-ui/core'
 
 
@@ -13,12 +13,12 @@ export default withWidth()(
 
 
 
-    return   <Paper>
+    return   <AppBar position='static'>
     <Tabs 
       value={index} 
       onChange={onIndexSelect}
-      indicatorColor="primary" 
-      textColor="primary" 
+      indicatorColor="secondary" 
+      textColor="secondary" 
       centered={width !== 'xs'}
       scrollable={width === 'xs'}
     >
@@ -28,7 +28,7 @@ export default withWidth()(
         <Tab label={group} />
       ))}
     </Tabs>
-  </Paper>
+  </AppBar>
   }
 )
 

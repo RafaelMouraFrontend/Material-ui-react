@@ -16,15 +16,37 @@ import { Delete, Edit } from '@material-ui/icons'
 import Form from './Form'
 
 
-const styles = {
+const styles = theme => ({
   paper: {
     padding: 20,
-    marginTop: 5,
-    height: 500,
-    overflowY: 'auto'
-   
+    overflowY: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 5,
+      height: 'calc(100% - 10px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '100%'
+    }
+  },
+  '@global': {
+    'html, body, #root': {
+      height: '100%'
+    }
+  },
+  container: {
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100% -64px -48px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100% -56px -48px)'
+    }
+  },
+  item: {
+    [theme.breakpoints.down('xs')]: {
+      height: '50%'
+    }
   }
-}
+})
 
 class AutoGrid extends Component {
   render(){
@@ -48,8 +70,8 @@ class AutoGrid extends Component {
       
     return (
       
-        <Grid container>
-          <Grid item xs={12} sm={6}>
+        <Grid container className={classes.container}>
+          <Grid item className={classes.item} xs={12} sm={6}>
             <Paper className={classes.paper}>
               {exercises.map(([group, exercises])=>
                 !category || category === group
@@ -58,6 +80,7 @@ class AutoGrid extends Component {
                       <Typography
                       variant='headline'
                       style={{textTransform: 'capitalize'}}
+                      color='secondary'
                       >
                         {group}
                       </Typography>
@@ -70,10 +93,10 @@ class AutoGrid extends Component {
                           >
                           <ListItemText primary={title} />
                           <ListItemSecondaryAction>
-                            <IconButton onClick={() => onSelectEdit(id)}>
+                            <IconButton color="primary" onClick={() => onSelectEdit(id)}>
                               <Edit />
                             </IconButton>
-                            <IconButton onClick={() => onDelete(id)}>
+                            <IconButton color="primary" onClick={() => onDelete(id)}>
                               <Delete />
                             </IconButton>
                           </ListItemSecondaryAction>
@@ -85,11 +108,12 @@ class AutoGrid extends Component {
               )}
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item className={classes.item} xs={12} sm={6}>
             <Paper className={classes.paper}>
               <Typography 
                 variant="display1"
                 gutterBottom
+                color="secondary"
               >
                 {title}
               </Typography>                
